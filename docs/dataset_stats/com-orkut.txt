@@ -1,0 +1,28 @@
+graph             : com-orkut
+vertices (n)      : 3072441
+CSR entries (m)   : 234370166 (= 2 x undirected edges)
+avg degree        : 76.281
+std dev degree    : 154.781
+CV (std/avg)      : 2.029 -> HIGH-VARIANCE (power-law like)
+min/max degree    : 1 / 33313
+isolated vertices : 0
+top-1% edge share : 11.9%
+est. diameter     : 8 (double-sweep lower bound)
+reachable from hub: 100.00% of vertices
+degree histogram (vertices with degree in [2^b, 2^(b+1))):
+  [       1,        2) : 67767
+  [       2,        4) : 81630
+  [       4,        8) : 148076
+  [       8,       16) : 300386
+  [      16,       32) : 555441
+  [      32,       64) : 772047
+  [      64,      128) : 684527
+  [     128,      256) : 332579
+  [     256,      512) : 96178
+  [     512,     1024) : 29703
+  [    1024,     2048) : 2995
+  [    2048,     4096) : 735
+  [    4096,     8192) : 250
+  [    8192,    16384) : 99
+  [   16384,    32768) : 27
+  [   32768,    65536) : 1

@@ -1,0 +1,27 @@
+graph             : soc-LiveJournal1
+vertices (n)      : 4847571
+CSR entries (m)   : 85702474 (= 2 x undirected edges)
+avg degree        : 17.679
+std dev degree    : 52.003
+CV (std/avg)      : 2.941 -> HIGH-VARIANCE (power-law like)
+min/max degree    : 0 / 20333
+isolated vertices : 962
+top-1% edge share : 19.3%
+est. diameter     : 19 (double-sweep lower bound)
+reachable from hub: 99.93% of vertices
+degree histogram (vertices with degree in [2^b, 2^(b+1))):
+  [       1,        2) : 1057993
+  [       2,        4) : 919014
+  [       4,        8) : 833607
+  [       8,       16) : 742607
+  [      16,       32) : 616847
+  [      32,       64) : 404231
+  [      64,      128) : 184810
+  [     128,      256) : 62310
+  [     256,      512) : 19429
+  [     512,     1024) : 4855
+  [    1024,     2048) : 704
+  [    2048,     4096) : 161
+  [    4096,     8192) : 29
+  [    8192,    16384) : 11
+  [   16384,    32768) : 1

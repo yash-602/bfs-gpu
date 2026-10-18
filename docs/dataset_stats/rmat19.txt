@@ -1,0 +1,28 @@
+graph             : rmat19
+vertices (n)      : 524288
+CSR entries (m)   : 15481582 (= 2 x undirected edges)
+avg degree        : 29.529
+std dev degree    : 220.275
+CV (std/avg)      : 7.460 -> HIGH-VARIANCE (power-law like)
+min/max degree    : 0 / 40443
+isolated vertices : 188268
+top-1% edge share : 47.6%
+est. diameter     : 8 (double-sweep lower bound)
+reachable from hub: 64.05% of vertices
+degree histogram (vertices with degree in [2^b, 2^(b+1))):
+  [       1,        2) : 70492
+  [       2,        4) : 66832
+  [       4,        8) : 52531
+  [       8,       16) : 50526
+  [      16,       32) : 37680
+  [      32,       64) : 14200
+  [      64,      128) : 27093
+  [     128,      256) : 811
+  [     256,      512) : 10819
+  [     512,     1024) : 3876
+  [    1024,     2048) : 0
+  [    2048,     4096) : 969
+  [    4096,     8192) : 171
+  [    8192,    16384) : 0
+  [   16384,    32768) : 19
+  [   32768,    65536) : 1

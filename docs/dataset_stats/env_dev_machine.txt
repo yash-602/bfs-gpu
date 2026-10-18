@@ -1,0 +1,15 @@
+date            : 2026-10-17T05:49:22+00:00
+git commit      : n/a
+git dirty files : 0
+OS              : Ubuntu 24.04.3 LTS kernel 6.6.87.2-microsoft-standard-WSL2
+CPU             : 12th Gen Intel(R) Core(TM) i5-12450H
+CPU cores       : 12 logical
+RAM             : 7.6Gi
+g++             : g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+nvcc            : 
+GPU             : Failed to initialize NVML: N/A
+Failed to properly shut down NVML: N/A
+GPU clocks      : Failed to initialize NVML: N/A
+Failed to properly shut down NVML: N/A
+OMP_NUM_THREADS : unset (uses all cores)
+make flags      : ARCH=native OPT=-O3

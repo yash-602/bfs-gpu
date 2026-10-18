@@ -1,0 +1,16 @@
+graph             : roadNet-PA
+vertices (n)      : 1088092
+CSR entries (m)   : 3083796 (= 2 x undirected edges)
+avg degree        : 2.834
+std dev degree    : 1.017
+CV (std/avg)      : 0.359 -> low-variance (uniform like)
+min/max degree    : 1 / 9
+isolated vertices : 0
+top-1% edge share : 1.8%
+est. diameter     : 780 (double-sweep lower bound)
+reachable from hub: 99.95% of vertices
+degree histogram (vertices with degree in [2^b, 2^(b+1))):
+  [       1,        2) : 188317
+  [       2,        4) : 623426
+  [       4,        8) : 276332
+  [       8,       16) : 17

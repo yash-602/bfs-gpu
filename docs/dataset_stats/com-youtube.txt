@@ -1,0 +1,27 @@
+graph             : com-youtube
+vertices (n)      : 1134890
+CSR entries (m)   : 5975248 (= 2 x undirected edges)
+avg degree        : 5.265
+std dev degree    : 50.754
+CV (std/avg)      : 9.640 -> HIGH-VARIANCE (power-law like)
+min/max degree    : 1 / 28754
+isolated vertices : 0
+top-1% edge share : 36.5%
+est. diameter     : 24 (double-sweep lower bound)
+reachable from hub: 100.00% of vertices
+degree histogram (vertices with degree in [2^b, 2^(b+1))):
+  [       1,        2) : 602539
+  [       2,        4) : 275097
+  [       4,        8) : 138098
+  [       8,       16) : 65984
+  [      16,       32) : 29500
+  [      32,       64) : 13435
+  [      64,      128) : 5985
+  [     128,      256) : 2567
+  [     256,      512) : 1082
+  [     512,     1024) : 386
+  [    1024,     2048) : 139
+  [    2048,     4096) : 62
+  [    4096,     8192) : 10
+  [    8192,    16384) : 5
+  [   16384,    32768) : 1
