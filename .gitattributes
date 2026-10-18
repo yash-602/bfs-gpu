@@ -1,0 +1,3 @@
+# Keep Linux line endings for everything (the Makefile and bash scripts break with CRLF),
+# even when the repository is checked out or edited on Windows.
+* text=auto eol=lf

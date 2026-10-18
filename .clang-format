@@ -1,0 +1,11 @@
+BasedOnStyle: Google
+IndentWidth: 4
+ColumnLimit: 104
+AccessModifierOffset: -4
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLoopsOnASingleLine: true
+SortIncludes: false
+ReflowComments: true
+AlignTrailingComments: true
+PointerAlignment: Left
