@@ -51,5 +51,23 @@ the GPU times exclude the equivalent setup. This biases the GPU speedups slightl
 | per-SM efficiency (optional) | speedup over serial / number of SMs |
 | resource R | `max_blocks`, the maximum grid size of each kernel launch (valid because all kernels use grid-stride loops); 0 = unlimited |
 
-> **PLACEHOLDER-NOT-YET-DELIVERED (Member 2):** add the experiment list (E1-E7, playbook section 8.1) and
-> any protocol change made during the runs (e.g. reduced SRC/TRIALS, omitted scales), with the reason.
+## 4.5 Experiments
+
+All GPU experiments are run by `scripts/run_all.sh` through `bin/bench`; E7 by `scripts/omp_scaling.sh`.
+
+| ID | Question | Graphs | What varies | Output |
+|----|----------|--------|-------------|--------|
+| E1 | Is everything correct? | the small test suite + every real graph | all implementations and configurations | `verified` column, `test_*` programs |
+| E2 | How fast is each implementation per graph category? | roadNet-CA, com-youtube, soc-LiveJournal1, com-orkut, rmat16/18/20/22 | serial vs naive vs adaptive (defaults) | `results/E2_main.csv` |
+| E3 | Which parts of the adaptive scheme matter? | roadNet-CA, soc-LiveJournal1, rmat22 | block bucket on/off, streams on/off, SCAN vs FUSED, thresholds (warp 8..128 x block 512..4096) | `results/E3_ablation.csv` |
+| E4 | Strong scaling | roadNet-CA, soc-LiveJournal1, rmat22 | R = 1, 2, 4, ..., 1024 blocks per kernel, plus unlimited | `results/E4_strong.csv` |
+| E5 | Weak scaling | rmat15 ... rmat22 | scale 15+i with R = 8 x 2^i | `results/E5_weak.csv` |
+| E6 | Best block size? | roadNet-CA, soc-LiveJournal1, rmat22 | block size 32 ... 1024 | `results/E6_block.csv` |
+| E7 | OpenMP host scaling | com-youtube, rmat20 | OMP_NUM_THREADS = 1, 2, 4, 8 | `results/omp_scaling.csv` |
+
+E2 and E3 use 5 sources x 5 trials; E4, E5 and E6 use 3 sources x 3 trials and 1 serial trial. Note that R
+is a per-kernel cap: the adaptive program may run up to three kernels at once on separate streams, so it can
+use up to 3R blocks at a time (the `--no-streams` variant in E3 removes this difference).
+
+> **PLACEHOLDER-NOT-YET-DELIVERED (Member 2):** after the final run, list any protocol change made during the
+> runs (e.g. reduced SRC/TRIALS, graphs or scales omitted because of GPU memory or time), with the reason.
