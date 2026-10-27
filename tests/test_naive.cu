@@ -1,15 +1,28 @@
-// tests/test_naive.cu -- OWNER: Member 2. GPU correctness test for the naive implementation.
-// =====================================================================================================
-// PLACEHOLDER-NOT-YET-DELIVERED (Member 2, hand-off H3)
-//
-// MEMBER 2: replace this WHOLE file with tests/test_naive.cu from your playbook, section 9.5.
-//           It must end by printing "TEST_NAIVE: PASS" (scripts/check_all.sh greps for it).
-// Until then this stand-in prints "TEST_NAIVE: FAIL (placeholder)" so check_all.sh cannot pass by accident.
-// =====================================================================================================
-#include <cstdio>
+
+ // tests/test_naive.cu -- OWNER: Member 2. GPU correctness test for the naive implementation.
+#include "test_suite.h"
 
 int main() {
-    printf("tests/test_naive.cu is a PLACEHOLDER: Member 2 has not delivered it yet\n");
-    printf("\nTEST_NAIVE: FAIL (placeholder)\n");
-    return 1;
+    print_gpu_info();
+    bool ok = true;
+    const int blocks[] = {32, 128, 256, 1024};
+    const int caps[] = {0, 1, 3};
+
+    for (int bs : blocks)
+        for (int cap : caps) {
+            NaiveConfig cfg;
+            cfg.block_size = bs;
+            cfg.max_blocks = cap;
+            std::string name = "naive block=" + std::to_string(bs) +
+                               " cap=" + std::to_string(cap);
+
+            ok &= run_correctness_suite(
+                name, [&](const DeviceGraph& g, vid_t s, std::vector<int>& lv) {
+                    BFSStats st;
+                    bfs_naive_cuda(g, s, lv, cfg, st);
+                });
+        }
+
+    printf(ok ? "\nTEST_NAIVE: PASS\n" : "\nTEST_NAIVE: FAIL\n");
+    return ok ? 0 : 1;
 }
