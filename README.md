@@ -12,9 +12,13 @@ social and R-MAT graphs.
 
 ## Project status: what still has to be delivered
 
-Member 1's part (contract, host library, tools, tests, datasets, scripts) is complete. The files below are
-**placeholders** written by Member 1 so the repository builds. Each one says at the top what goes in it and
-which playbook section holds the code. List the remaining ones with:
+- **Member 1** (contract, host library, tools, tests, datasets, scripts): complete.
+- **Member 2** (naive CUDA BFS + test, `bench`, `run_all.sh`, `analyze.py`): code complete; the GPU
+  experiments (E2, E4-E6) and report section 5 wait for a run on a GPU.
+- **Member 3** (adaptive CUDA BFS): not delivered yet. Until then, run experiments with `IMPL=naive`.
+
+The files below are still **placeholders** written by Member 1 so the repository builds. Each one says at the
+top what goes in it and which playbook section holds the code. List the remaining ones with:
 
 ```bash
 grep -rl "PLACEHOLDER-NOT-YET-DELIVERED" src tests scripts docs
@@ -22,15 +26,13 @@ grep -rl "PLACEHOLDER-NOT-YET-DELIVERED" src tests scripts docs
 
 | File | Owner | Playbook section | Done when |
 |------|-------|------------------|-----------|
-| `src/bfs_naive.cu` | Member 2 | M2 9.4 | `./bin/test_naive` prints `TEST_NAIVE: PASS` |
-| `tests/test_naive.cu` | Member 2 | M2 9.5 | same |
-| `src/bench.cu` | Member 2 | M2 9.6 | smoke test below ends with `all runs verified OK` |
-| `scripts/run_all.sh` | Member 2 | M2 9.8 | runs E2-E6 |
-| `scripts/analyze.py` | Member 2 | M2 9.9 | regenerates `results/tables.md` and `results/figs/` |
 | `src/bfs_adaptive.cu` | Member 3 | M3 9.4 | `./bin/test_adaptive` prints `TEST_ADAPTIVE: PASS` |
 | `tests/test_adaptive.cu` | Member 3 | M3 9.5 | same |
 | `docs/adaptive_design.md` | Member 3 | M3 9.9, 9.14 | final defaults written down (H7) |
 | `docs/report/*` sections marked PLACEHOLDER | M2 / M3 | report outline 8.2 | section written |
+
+While `src/bfs_adaptive.cu` is a placeholder, `bench --impl both` stops with an error when it reaches the
+adaptive program; use `--impl naive` (or `IMPL=naive bash scripts/run_all.sh`).
 
 To deliver: overwrite the placeholder file completely with your version (same path and name), then run
 `bash scripts/check_all.sh`.
@@ -43,12 +45,14 @@ repository inside the Linux filesystem (`~/bfs-gpu`), not under `/mnt/c/...` (pl
 
 ## Running on Google Colab (no local NVIDIA GPU)
 
-1. On your computer, from the repository root: `python scripts/make_zip.py` (writes `../bfs-gpu.zip`, code only).
-2. Open https://colab.research.google.com, *File -> Upload notebook*, choose `colab/bfs_colab.ipynb`.
-3. *Runtime -> Change runtime type -> T4 GPU*, then *Runtime -> Run all*; upload `bfs-gpu.zip` when asked.
+1. Open the notebook straight from GitHub:
+   https://colab.research.google.com/github/yash-602/bfs-gpu/blob/main/colab/bfs_colab.ipynb
+2. *Runtime -> Change runtime type -> T4 GPU*, then *Runtime -> Run all*.
 
-The notebook builds for the detected GPU, runs the host tests, `hello_cuda`, the golden-value check and
-`scripts/check_all.sh`, and can download the datasets, record `results/env.txt` and download `results/`.
+The notebook clones this repository, builds for the detected GPU, runs the host tests, `hello_cuda`, the
+golden-value check and `scripts/check_all.sh`, downloads the datasets, records `results/env.txt`, runs the
+experiments and `analyze.py`, and downloads `results/` as a zip. (Without GitHub access, use the zip-upload
+cell instead; `python scripts/make_zip.py` makes `../bfs-gpu.zip`.)
 Colab GPUs differ between sessions: final experiments must all run in one session (playbook 4.3).
 
 ## Build
