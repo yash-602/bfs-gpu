@@ -1,0 +1,7 @@
+gpu_name=Tesla T4
+sm_count=40
+compute_capability=7.5
+global_mem_mb=14912
+max_threads_per_sm=1024
+runtime=13000
+driver=13000

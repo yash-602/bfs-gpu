@@ -21,6 +21,12 @@ One line per decision, with the date. Things in `<angle brackets>` are still ope
   `make all` has no warnings with the placeholders, and also with the naive/adaptive code exactly as printed in
   the Member 2 and Member 3 playbooks, so the contract headers work with the teammates' code. Not run (no GPU).
 
+- 2026-10-27: repository made public so Colab can clone it. First full GPU run on Colab (Tesla T4, commit
+  a88c3f5): test_host 39/39, hello_cuda PASS, golden values reproduced, TEST_NAIVE PASS (12 configs), and a quick
+  naive-only run of E2/E5/E6 with 392 rows, 0 verification failures. Plausibility: max 2.2 GTEPS, far below the
+  T4 bound of ~80 GTEPS (320 GB/s / 4 B). Stored as preliminary results in
+  `results/colab_t4_2026-10-27_preliminary/`.
+
 ## Independent re-computations of results (quality gate, playbook 9.11)
 
 | Date | CSV row checked (file, graph, impl, source) | graph_tool serial result | Matches? |
